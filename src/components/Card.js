@@ -21,6 +21,7 @@ class Card extends React.Component {
       cardRare,
       cardTrunfo,
     } = this.props;
+
     return (
       <div>
         <h1 data-testid="name-card">{ cardName }</h1>

@@ -6,10 +6,6 @@ class App extends React.Component {
   constructor() {
     super();
 
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
-    this.button = this.button.bind(this);
-
     this.state = {
       cardName: '',
       cardDescription: '',
@@ -20,11 +16,35 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      cartas: [],
     };
   }
 
-  onSaveButtonClick() {
-    this.setState(() => ({
+  onSaveButtonClick = (event) => {
+    event.preventDefault();
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    } = this.state;
+
+    const objeto = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+
+    this.setState((preventState) => ({
       cardName: '',
       cardDescription: '',
       cardAttr1: '0',
@@ -32,12 +52,13 @@ class App extends React.Component {
       cardAttr3: '0',
       cardImage: '',
       cardRare: '',
-      cardTrunfo: false,
+      cardTrunfo: true,
       isSaveButtonDisabled: true,
+      cartas: [...preventState.cartas, objeto],
     }));
   }
 
-  onInputChange({ target }) {
+  onInputChange = ({ target }) => {
     const { name } = target;
     const valor = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
@@ -45,8 +66,8 @@ class App extends React.Component {
     }, () => this.button(valor));
   }
 
-  button(value) {
-    const { cardAttr1, cardAttr2, cardAttr3, isSaveButtonDisabled } = this.state;
+  button = (value) => {
+    const { cardAttr1, cardAttr2, cardAttr3 } = this.state;
     const noventa = 90;
     const cardAtt1 = parseInt(cardAttr1, 10);
     const cardAtt2 = parseInt(cardAttr2, 10);
@@ -56,7 +77,7 @@ class App extends React.Component {
     const p = this.setState({
       isSaveButtonDisabled: true,
     });
-    if (value.length === 0 && isSaveButtonDisabled === false) {
+    if (value.length === 0) {
       this.setState({
         isSaveButtonDisabled: true,
       });
@@ -86,6 +107,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       isSaveButtonDisabled,
+      cartas,
     } = this.state;
 
     return (
@@ -115,6 +137,17 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+
+        {
+
+          cartas.map((carta, index) => (
+            <div key={ index }>
+              {carta.cardName}
+              {carta.cardDescription}
+            </div>
+          ))
+
+        }
       </div>
     );
   }
