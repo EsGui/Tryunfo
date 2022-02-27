@@ -19,7 +19,7 @@ class Form extends React.Component {
     } = this.props;
 
     const check = (response) => {
-      if (response) {
+      if (!response) {
         return (
           <label htmlFor="check">
             check
@@ -39,7 +39,7 @@ class Form extends React.Component {
     };
 
     return (
-      <>
+      <form>
         <label htmlFor="titulo">
           titulo
           <input
@@ -112,9 +112,17 @@ class Form extends React.Component {
             <option>muito raro</option>
           </select>
         </label>
-        {
-          check(hasTrunfo)
-        }
+        {check(hasTrunfo)}
+        {/* <label htmlFor="check">
+          check
+          <input
+            name="cardTrunfo"
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+            type="checkbox"
+            data-testid="trunfo-input"
+          />
+        </label> */}
         <button
           name="desativa"
           disabled={ isSaveButtonDisabled }
@@ -124,7 +132,7 @@ class Form extends React.Component {
         >
           Salvar
         </button>
-      </>
+      </form>
     );
   }
 }

@@ -15,7 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: '',
       cardTrunfo: false,
-      hasTrunfo: true,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       cartas: [],
     };
@@ -47,7 +47,7 @@ class App extends React.Component {
 
     if (cardTrunfo) {
       this.setState(({
-        hasTrunfo: false,
+        hasTrunfo: true,
       }));
     }
 
@@ -115,7 +115,6 @@ class App extends React.Component {
       isSaveButtonDisabled,
       cartas,
     } = this.state;
-
     return (
       <div>
         <h1>Tryunfo</h1>
