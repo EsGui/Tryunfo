@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import landScapeAnimes from '../images/landScapeAnime.jpg'
 
 function compara(card) {
   if (card) {
@@ -23,14 +24,30 @@ class Card extends React.Component {
     } = this.props;
 
     return (
-      <div>
-        <h1 data-testid="name-card">{ cardName }</h1>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{ cardDescription }</p>
-        <p data-testid="attr1-card">{ cardAttr1 }</p>
-        <p data-testid="attr2-card">{ cardAttr2 }</p>
-        <p data-testid="attr3-card">{ cardAttr3 }</p>
-        <p data-testid="rare-card">{ cardRare }</p>
+      <div className="InfoFromScreenStyle">
+        <div className="divCardName">
+          <h1>{ cardName }</h1>
+        </div>
+        {
+          cardImage ? (
+            <img style={ { width: '100%', height: '400px' } } src={ cardImage } />
+          ) : (
+            <img style={ { width: '100%', height: '400px' } } src={ landScapeAnimes } />
+          )
+        }
+        
+        <div className="divTitleDescription">
+          <h4>Description</h4>
+        </div>
+        <div className="divDescription">
+          <p>{ cardDescription }</p>
+        </div>
+        <div className="Attributes">
+          <p>atributo1: { cardAttr1 }</p>
+          <p>atributo2: { cardAttr2 }</p>
+          <p>atributo3: { cardAttr3 }</p>
+          <p>{ cardRare }</p>
+        </div>
         { compara(cardTrunfo) }
       </div>
     );

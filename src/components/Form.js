@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import landScapeAnimes from '../images/landScapeAnime.jpg'
 
 class Form extends React.Component {
   render() {
@@ -21,8 +22,8 @@ class Form extends React.Component {
     const check = (response) => {
       if (!response) {
         return (
-          <label htmlFor="check">
-            check
+          <label className="ButtonCheckStyle"htmlFor="check">
+            <p>check</p>
             <input
               name="cardTrunfo"
               checked={ cardTrunfo }
@@ -39,9 +40,9 @@ class Form extends React.Component {
     };
 
     return (
-      <form>
+      <form className="FormsTryunfoStyle">
         <label htmlFor="titulo">
-          titulo
+          <p>titulo</p>
           <input
             name="cardName"
             type="text"
@@ -51,7 +52,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="descricao">
-          descricao
+          <p>descricao</p>
           <textarea
             name="cardDescription"
             value={ cardDescription }
@@ -60,7 +61,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="atributo1">
-          atributo1
+          <p>atributo1</p>
           <input
             name="cardAttr1"
             value={ cardAttr1 }
@@ -70,7 +71,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="atributo2">
-          atributo2
+          <p>atributo2</p>
           <input
             name="cardAttr2"
             value={ cardAttr2 }
@@ -80,7 +81,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="atributo3">
-          atributo3
+          <p>atributo3</p>
           <input
             name="cardAttr3"
             value={ cardAttr3 }
@@ -90,7 +91,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="image">
-          image
+          <p>image</p>
           <input
             name="cardImage"
             value={ cardImage }
@@ -100,7 +101,7 @@ class Form extends React.Component {
           />
         </label>
         <label htmlFor="seleciona">
-          seleciona
+          <p>seleciona</p>
           <select
             name="cardRare"
             value={ cardRare }
@@ -113,16 +114,6 @@ class Form extends React.Component {
           </select>
         </label>
         {check(hasTrunfo)}
-        {/* <label htmlFor="check">
-          check
-          <input
-            name="cardTrunfo"
-            checked={ cardTrunfo }
-            onChange={ onInputChange }
-            type="checkbox"
-            data-testid="trunfo-input"
-          />
-        </label> */}
         <button
           name="desativa"
           disabled={ isSaveButtonDisabled }
